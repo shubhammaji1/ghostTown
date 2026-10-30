@@ -1,0 +1,7 @@
+node_modules
+artifacts
+**/dist
+apps/vscode-extension/media/studio
+pnpm-lock.yaml
+*.txt
+ghosttown.config.json

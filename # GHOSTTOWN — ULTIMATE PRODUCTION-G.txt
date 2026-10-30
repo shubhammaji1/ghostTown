@@ -1,0 +1,2322 @@
+# GHOSTTOWN — ULTIMATE PRODUCTION-GRADE VS CODE EXTENSION MASTER PROMPT
+
+**Product Name:** GhostTown  
+**Tagline:** Your app deserves users before it gets users.  
+**Product Type:** VS Code Extension + Standalone npm Core + Local Browser Runner  
+**Category:** AI-Powered Synthetic User Testing / Developer Productivity / QA Automation  
+**Primary Language:** TypeScript  
+**Primary IDE:** Visual Studio Code  
+**Future Compatibility:** Cursor and other compatible VS Code-based editors  
+**Target Quality:** Production-ready, secure, reliable, marketplace-publishable  
+**Architecture:** Local-first, modular, AI-optional, extensible  
+**Development Approach:** Architecture → Core Engine → VS Code Extension → Real Testing → Security → CI/CD → Marketplace Release
+
+---
+
+# 1. YOUR ROLE
+
+Act as an elite engineering team consisting of:
+
+- Principal Software Architect
+- Senior TypeScript/Node.js Engineer
+- VS Code Extension API Expert
+- Playwright Browser Automation Specialist
+- AI Agent and LLM Engineer
+- QA Automation Architect
+- Developer Experience Designer
+- Application Security Engineer
+- Cross-Platform Build Engineer
+- npm Package Maintainer
+- Marketplace Publishing Expert
+- Production Reliability and Testing Engineer
+
+Your responsibility is to design, implement, test, harden, document, package, and prepare **GhostTown** for production release.
+
+Do not build a mockup, static demonstration, or frontend-only prototype.
+
+Build the actual working extension and reusable testing engine.
+
+## Non-negotiable engineering rules
+
+1. Use real Playwright-controlled browser sessions.
+2. Never fabricate test results, AI behavior, bugs, screenshots, or success metrics.
+3. Keep the testing engine independent of VS Code.
+4. Run locally without requiring a SaaS account.
+5. Make AI optional rather than mandatory.
+6. Require no API key for deterministic testing.
+7. Enforce safe, bounded browser actions.
+8. Never execute untrusted AI-generated shell commands or JavaScript.
+9. Protect workspace secrets and browser-session data.
+10. Integrate with native VS Code functionality.
+11. Keep the extension responsive during execution.
+12. Support Windows, macOS, and Linux.
+13. Implement reliable cancellation and resource cleanup.
+14. Include thorough automated tests.
+15. Produce installable npm and VSIX artifacts.
+16. Verify installation from the packaged artifacts.
+17. Do not claim production readiness without measurable evidence.
+
+---
+
+# 2. PRODUCT VISION
+
+Build GhostTown as a developer tool that allows programmers to simulate realistic user journeys without manually writing every browser test.
+
+## Example workflow
+
+A developer is working on a React application.
+
+Their application runs at:
+
+http://localhost:3000
+
+Inside VS Code, they open GhostTown.
+
+They see:
+
+**Project:** Current React Workspace
+
+**Target:** localhost:3000
+
+**Testing Mode:** Hybrid
+
+**Synthetic Users:** 5
+
+They select:
+
+- First-Time Visitor
+- Impatient User
+- Mobile User
+- Keyboard-Only User
+- Curious Explorer
+
+Then click:
+
+**Run Population Test**
+
+GhostTown launches controlled, isolated browser sessions.
+
+Each persona attempts tasks such as:
+
+- Opening the homepage
+- Navigating between pages
+- Completing forms
+- Searching for information
+- Finding and activating buttons
+- Testing validation
+- Following defined user objectives
+- Checking relevant accessibility behavior
+
+The extension reports actual observations.
+
+Example:
+
+**Issue #1: Submit button does not complete the expected action**
+
+Persona: First-Time Visitor
+
+Page: /register
+
+Observed: The button receives a click, but the expected confirmation does not appear.
+
+Evidence:
+- Failed assertion
+- Browser screenshot
+- Action timeline
+- Playwright trace
+
+Reproduction:
+1. Open /register.
+2. Enter valid synthetic user information.
+3. Select Submit.
+4. Observe that the required success condition is not satisfied.
+
+GhostTown must not classify an unchanged page as a definite bug without an expected outcome or corroborating evidence.
+
+The developer can inspect the issue and optionally navigate to a source location when reliable source mapping exists.
+
+---
+
+# 3. PRODUCT POSITIONING
+
+GhostTown is not:
+
+- Another chatbot extension
+- A replacement for Playwright
+- A generic load-testing tool
+- A real-human behavior prediction engine
+- A tool for manufacturing website traffic
+- A website screenshot generator
+- An AI wrapper without deterministic verification
+
+GhostTown is:
+
+**A developer-focused synthetic user testing environment that combines persona-driven exploration, deterministic browser automation, runtime evidence, and intelligent issue investigation.**
+
+## Key product differentiators
+
+### A. Developer-native experience
+
+Everything necessary for local test execution is available inside VS Code.
+
+### B. Persona-driven exploration
+
+Different testing profiles can trigger different navigation approaches, environments, retry budgets, and accessibility checks.
+
+### C. Real execution
+
+Every reported browser interaction corresponds to an actual action.
+
+### D. Evidence-backed defects
+
+Every confirmed defect includes observable proof.
+
+### E. Local-first privacy
+
+Developers can use deterministic testing without sending source code or browser content to an external service.
+
+### F. Independent testing engine
+
+The core can later support CLI, CI/CD, GitHub Actions, and hosted execution.
+
+---
+
+# 4. FINAL PRODUCT ARCHITECTURE
+
+Use three primary deliverables.
+
+## Package A — ghosttown-core
+
+A reusable TypeScript npm package.
+
+Responsibilities:
+
+- Persona models
+- Scenario definitions
+- Browser execution
+- Action policies
+- Assertion evaluation
+- Deterministic exploration strategies
+- Optional AI decision adapter
+- Evidence generation
+- Issue detection
+- Report generation
+- Lifecycle management
+
+The package must be importable by other Node.js projects.
+
+Its public API must be documented and stable.
+
+## Package B — ghosttown-cli
+
+A standalone command-line interface.
+
+Responsibilities:
+
+- Run test scenarios
+- Validate configuration
+- Check environment readiness
+- Install or verify supported browser dependencies
+- Display progress
+- Export results
+- Provide machine-readable output
+
+The CLI must function without VS Code.
+
+## Package C — ghosttown-vscode
+
+The user-facing VS Code extension.
+
+Responsibilities:
+
+- Workspace integration
+- Sidebar user experience
+- Project detection
+- Local target configuration
+- Persona selection
+- Test execution management
+- Real-time test output
+- Native Testing API integration
+- Diagnostics
+- Evidence inspection
+- Report viewing
+- Run history
+- Optional AI configuration
+
+The extension invokes the reusable core through a managed local runner process.
+
+Do not duplicate the engine inside the extension.
+
+## Future product
+
+GhostTown Cloud may be built later.
+
+Do not make cloud infrastructure, cloud authentication, subscriptions, Redis, or PostgreSQL mandatory for the local MVP.
+
+---
+
+# 5. TECHNOLOGY STACK
+
+## Core engine
+
+- TypeScript with strict type checking
+- Node.js active LTS
+- Playwright
+- Zod
+- Vitest
+- Lightweight structured logging
+- Configurable concurrency limiter
+- Local filesystem artifact storage
+
+## VS Code Extension
+
+- VS Code Extension API
+- TypeScript
+- Native TreeView where appropriate
+- Native Testing API
+- DiagnosticCollection
+- OutputChannel
+- Progress notifications
+- SecretStorage
+- WorkspaceState
+- GlobalStorageUri
+- WebviewViewProvider for richer custom presentation
+
+## Webview UI
+
+Use:
+
+- React
+- TypeScript
+- Vite
+- CSS variables using VS Code theme tokens
+- Accessible components
+- Minimal dependencies
+
+Do not run a Next.js application inside the extension.
+
+Use native VS Code controls for simple interactions.
+
+Use webviews for interactive population selection, advanced timelines, and evidence dashboards where native APIs are insufficient.
+
+## Storage
+
+For v1:
+
+- JSON configuration files
+- Local run metadata
+- Structured JSON event logs
+- Local screenshot/trace artifacts
+
+Use SQLite only if profiling demonstrates a meaningful need for indexed local history.
+
+Avoid PostgreSQL and Redis for the local-only MVP.
+
+## Testing
+
+- Vitest
+- Playwright
+- @vscode/test-cli
+- @vscode/test-electron
+- Cross-platform GitHub Actions
+
+## Packaging
+
+- pnpm workspaces
+- tsup or esbuild for Node bundles
+- Vite for webview assets
+- @vscode/vsce
+- npm pack
+- Open VSX tooling where supported
+
+Verify actual current dependency and API compatibility before implementation.
+
+---
+
+# 6. REPOSITORY STRUCTURE
+
+Create:
+
+ghosttown/
+  apps/
+    vscode-extension/
+      src/
+        extension.ts
+        commands/
+        providers/
+        controllers/
+        diagnostics/
+        testing/
+        runner-client/
+        storage/
+        security/
+        webviews/
+        utilities/
+      media/
+      resources/
+      package.json
+      README.md
+      CHANGELOG.md
+      .vscodeignore
+
+  packages/
+    core/
+      src/
+        personas/
+        scenarios/
+        strategies/
+        browser/
+        execution/
+        assertions/
+        policies/
+        detectors/
+        evidence/
+        reporting/
+        ai/
+        contracts/
+        index.ts
+
+    cli/
+      src/
+        commands/
+        output/
+        runner/
+        bin.ts
+
+    runner/
+      src/
+        process/
+        ipc/
+        lifecycle/
+        workers/
+
+    shared/
+      src/
+        schemas/
+        types/
+        constants/
+
+  webview/
+    src/
+      components/
+      features/
+      hooks/
+      state/
+      styles/
+
+  fixtures/
+    demo-react-app/
+    sample-personas/
+    sample-scenarios/
+
+  tests/
+    unit/
+    integration/
+    extension/
+    e2e/
+    security/
+    packaging/
+
+  docs/
+    architecture/
+    installation/
+    configuration/
+    troubleshooting/
+    publishing/
+    security/
+
+  .github/
+    workflows/
+
+  pnpm-workspace.yaml
+  package.json
+  tsconfig.base.json
+  LICENSE
+  SECURITY.md
+  CONTRIBUTING.md
+  README.md
+
+Use a modular architecture with strict separation of responsibilities.
+
+Do not create circular dependencies.
+
+---
+
+# 7. VS CODE EXTENSION ACTIVATION
+
+Implement appropriate activation and lifecycle behavior.
+
+## Requirements
+
+- Do not automatically launch Playwright when VS Code starts.
+- Do not automatically open a large dashboard on startup.
+- Do not scan entire repositories unnecessarily.
+- Register commands and providers efficiently.
+- Dispose listeners, webviews, diagnostics and processes correctly.
+- Support multiple workspaces.
+- Handle opening a workspace with no project.
+
+## Workspace Trust
+
+Support VS Code Restricted Mode safely.
+
+In untrusted workspaces:
+
+- Allow viewing existing safe configuration where appropriate.
+- Disable browser execution initiated from untrusted workspace configuration.
+- Disable automatic project scripts.
+- Disable executable project hooks.
+- Do not start workspace processes.
+- Show an informative explanation.
+
+Recheck trust at the point of execution, not only when displaying buttons.
+
+Never treat workspace configuration as trusted executable instructions.
+
+## Platform scope
+
+Explicitly support:
+
+- VS Code desktop on Windows
+- VS Code desktop on macOS
+- VS Code desktop on Linux
+
+For the MVP, do not promise native browser execution inside vscode.dev.
+
+Detect unsupported web extension hosts and provide a truthful unsupported-environment message.
+
+For Remote SSH, WSL, and Dev Containers, identify whether the extension host and target application run locally or remotely.
+
+Do not silently execute against the wrong machine.
+
+Provide documented remote-host limitations and configuration.
+
+---
+
+# 8. GHOSTTOWN SIDEBAR EXPERIENCE
+
+The sidebar should be compact, elegant, and immediately understandable.
+
+Avoid oversized cards or a miniature full-screen SaaS dashboard.
+
+## Initial sidebar layout
+
+GHOSTTOWN
+
+Workspace: current project
+
+Target: localhost:3000
+
+Status: Ready
+
+Population
+
+- First-Time Visitor
+- Impatient User
+- Mobile Visitor
+- Keyboard-Only User
+
+Selected: 4 personas
+
+Testing Mode: Hybrid
+
+Primary action:
+
+Run Population Test
+
+Below:
+
+- Recent Runs
+- Discovered Issues
+- Configuration
+- Help
+
+## First-use experience
+
+When no project configuration exists:
+
+Display a concise welcome view.
+
+Actions:
+
+- Configure Current Project
+- Choose Target URL
+- Create First Scenario
+- Run Demo Playground
+- View Documentation
+
+Do not display fake projects or fabricated run history.
+
+## UX principles
+
+- Few clicks to start a test
+- Clear current status
+- Compact information hierarchy
+- Native VS Code appearance
+- Responsive layout
+- Keyboard navigation
+- Accessible labels
+- No promotional popups
+- No disruptive automatic panels
+- No unnecessary animations
+
+Use tooltips only for actions that need explanation.
+
+---
+
+# 9. EXTENSION COMMANDS
+
+Register real VS Code commands.
+
+Suggested command IDs:
+
+ghosttown.openDashboard
+
+ghosttown.configureTarget
+
+ghosttown.createPersona
+
+ghosttown.managePersonas
+
+ghosttown.createScenario
+
+ghosttown.runPopulation
+
+ghosttown.runScenario
+
+ghosttown.stopRun
+
+ghosttown.openRunHistory
+
+ghosttown.inspectIssue
+
+ghosttown.openTrace
+
+ghosttown.openScreenshot
+
+ghosttown.exportReport
+
+ghosttown.rerunFailedScenario
+
+ghosttown.clearHistory
+
+ghosttown.checkEnvironment
+
+ghosttown.installBrowser
+
+ghosttown.configureAI
+
+ghosttown.openDocumentation
+
+Every command must be backed by an actual implementation.
+
+Avoid registering actions that only display "Coming Soon".
+
+Commands that are not yet supported should be omitted from the release.
+
+---
+
+# 10. ENVIRONMENT AND PROJECT DETECTION
+
+Detect common JavaScript and TypeScript application projects.
+
+Examples:
+
+- React + Vite
+- Next.js
+- Vue + Vite
+- Angular
+- Express
+- Fastify
+- Other locally served applications
+
+Do not restrict GhostTown to React applications.
+
+## Detection
+
+Inspect limited known configuration files:
+
+- package.json
+- vite.config.*
+- next.config.*
+- angular.json
+- workspace configuration
+
+Identify probable development commands and target ports.
+
+Do not execute package scripts during detection.
+
+## Target configuration
+
+Allow the developer to:
+
+- Enter an explicit URL
+- Select a known local target
+- Save a preferred target
+- Check readiness
+- Reconfigure the target
+
+Project-detected port numbers are hints, not guarantees.
+
+Probe connectivity with bounded timeouts.
+
+Do not assume the application is running simply because package.json exists.
+
+## Starting development servers
+
+Optional feature:
+
+Allow the developer to start a selected development script.
+
+Before execution:
+
+1. Require trusted workspace.
+2. Display the exact command.
+3. Explain its execution context.
+4. Require user action/approval.
+5. Use VS Code Tasks or a controlled process.
+6. Track the lifecycle.
+7. Avoid arbitrary shell concatenation.
+
+Do not automatically execute scripts from downloaded repositories.
+
+---
+
+# 11. PERSONA ENGINE
+
+Build a reusable, configurable persona system.
+
+## Persona definition
+
+Each persona must contain:
+
+- Unique ID
+- Display name
+- Description
+- Goal
+- Device profile
+- Viewport
+- Locale
+- Navigation preferences
+- Exploration depth
+- Patience budget
+- Retry limit
+- Wait behavior
+- Allowed actions
+- Accessibility settings
+- Action/time budget
+
+## Built-in personas
+
+Implement at least these 12 presets:
+
+1. First-Time Visitor
+2. Impatient Visitor
+3. Curious Explorer
+4. Experienced Power User
+5. Mobile-Only Visitor
+6. Keyboard-Only User
+7. Slow-Network User
+8. Returning User
+9. Form-Focused User
+10. Search-Focused User
+11. Distracted User
+12. Cautious User
+
+These configurations must meaningfully change execution.
+
+For example:
+
+The Keyboard-Only persona must use real keyboard interaction where the scenario permits.
+
+The Mobile persona must use mobile viewport and appropriate emulation.
+
+The Impatient persona must apply shorter bounded wait budgets.
+
+Do not create fake demographic predictions.
+
+## Persona editor
+
+Allow:
+
+- Create
+- Modify
+- Duplicate
+- Delete
+- Save
+- Select
+- Import/export
+
+Validate all configurations using Zod.
+
+---
+
+# 12. SCENARIO SYSTEM
+
+A scenario defines what a synthetic user is trying to accomplish.
+
+Personas describe how the user behaves.
+
+Scenarios define the objective and expected outcome.
+
+## Example
+
+Scenario:
+
+Register a New User
+
+Goal:
+
+Create a synthetic account successfully.
+
+Actions:
+
+- Navigate to registration page.
+- Fill required fields.
+- Submit form.
+- Confirm success.
+
+Success condition:
+
+Expected confirmation is visible and, optionally, an authorized verification endpoint reports successful registration.
+
+## Scenario model
+
+Support:
+
+- Scenario ID
+- Name
+- Target
+- Start URL
+- Preconditions
+- Setup requirements
+- Steps
+- Expected assertions
+- Completion criteria
+- Maximum duration
+- Maximum actions
+- Retry rules
+- Allowed routes
+- Forbidden operations
+
+## Scenario management
+
+Allow:
+
+- Create
+- Edit
+- Delete
+- Duplicate
+- Validate
+- Save
+- Rerun
+- Export
+- Import
+
+Use declarative configurations.
+
+Do not automatically execute JavaScript embedded in scenario files.
+
+---
+
+# 13. TESTING MODES
+
+Implement three execution modes.
+
+## Mode 1 — Deterministic Testing
+
+Runs defined scenarios with Playwright.
+
+No AI required.
+
+Suitable for:
+
+- Registration
+- Login
+- Search
+- Navigation
+- Checkout sandbox
+- Form validation
+- Basic accessibility checks
+
+## Mode 2 — AI-Assisted Exploration
+
+Uses a configured LLM to choose bounded browser actions based on a persona and allowed objective.
+
+The agent may:
+
+- Inspect the current page
+- Identify available controls
+- Choose an allowed action
+- Observe results
+- Continue or stop
+
+All actions must pass through the policy engine.
+
+## Mode 3 — Hybrid Testing
+
+Combines deterministic workflows with AI-assisted exploration.
+
+Example:
+
+A deterministic script opens the product page.
+
+An AI persona explores visible product controls.
+
+A deterministic assertion verifies an expected outcome.
+
+## Important
+
+The user must be able to select a mode explicitly.
+
+If AI credentials are missing, deterministic testing must still work.
+
+Never silently invent AI decisions.
+
+---
+
+# 14. REAL PLAYWRIGHT BROWSER ENGINE
+
+This is the product's most important component.
+
+Implement the actual browser executor before sophisticated visual dashboards.
+
+## Execution lifecycle
+
+1. Validate configuration.
+2. Verify target and execution policy.
+3. Allocate a runner slot.
+4. Start the browser.
+5. Create a fresh browser context.
+6. Apply persona settings.
+7. Open the target page.
+8. Execute actions.
+9. Evaluate assertions.
+10. Capture evidence.
+11. Persist results.
+12. Close the context.
+13. Release resources.
+
+## Supported browser actions
+
+- Navigate
+- Click
+- Fill
+- Select
+- Check/uncheck
+- Scroll
+- Press keyboard keys
+- Wait for locator
+- Inspect accessible controls
+- Capture screenshot
+- Assert visible
+- Assert URL
+- Assert text
+- Assert response
+- Finish
+
+## Isolation
+
+Use separate browser contexts for distinct synthetic users.
+
+Clear:
+
+- Cookies
+- Session storage
+- Local storage
+- Permissions
+- Session credentials
+
+between independent runs unless an explicit scenario requires persisted state.
+
+Browser contexts isolate session state but are not a secure sandbox against arbitrary hostile websites.
+
+For untrusted remote targets, require stronger process/network isolation or explicitly restrict the execution mode.
+
+## Browser installation
+
+Do not assume Chromium is installed.
+
+Provide an environment check.
+
+If the required Playwright browser is missing:
+
+- Explain the missing dependency.
+- Offer an explicit Install Browser action.
+- Run the supported browser installation workflow with consent.
+- Display progress and errors.
+- Recheck compatibility afterward.
+
+Do not silently download large browser binaries when the extension activates.
+
+Bundle the compatible Playwright library correctly.
+
+Do not rely on undeclared globally installed packages.
+
+## Execution limits
+
+Enforce:
+
+- Maximum browser sessions
+- Maximum pages
+- Maximum steps
+- Maximum duration
+- Maximum AI decisions
+- Maximum retries
+- Maximum screenshots
+- Maximum artifact size
+- Maximum navigations
+- Rate limits
+
+Provide a Stop button that reliably cancels active work.
+
+---
+
+# 15. LOCAL RUNNER ARCHITECTURE
+
+Never run heavy browser workloads synchronously on the VS Code extension host.
+
+Create a dedicated runner package/process.
+
+## Architecture
+
+Extension Host
+→ Runner Controller
+→ Managed Child Process
+→ ghosttown-core
+→ Playwright Browser
+→ Test Events
+→ VS Code UI
+
+## IPC
+
+Use a versioned, typed JSON message protocol over local process standard input/output or another explicitly secured local channel.
+
+Example event categories:
+
+- runner.ready
+- run.started
+- session.started
+- action.started
+- action.completed
+- assertion.failed
+- issue.detected
+- artifact.created
+- session.completed
+- run.completed
+- run.cancelled
+- runner.error
+
+Every message must include:
+
+- Protocol version
+- Run ID
+- Event type
+- Sequence number
+- Timestamp
+- Validated payload
+
+Validate incoming events before rendering.
+
+## Process management
+
+Use controlled process spawning without shell execution.
+
+Requirements:
+
+- Explicit executable
+- Explicit argument array
+- Restricted environment variables
+- Graceful cancellation
+- Termination escalation after timeout
+- Child-process cleanup
+- Browser-process cleanup
+- Crash detection
+- Structured error reporting
+
+Do not allow the webview to launch arbitrary processes.
+
+## Event streaming
+
+Stream actual progress to the extension.
+
+Use bounded event buffers and backpressure handling.
+
+Avoid flooding the webview with every internal low-level browser event.
+
+Persist results before relying on them for the dashboard.
+
+---
+
+# 16. AI AGENT ENGINE
+
+Implement an optional AI decision layer.
+
+## Decision loop
+
+Goal
+→ Browser observation
+→ Candidate actions
+→ AI decision
+→ Schema validation
+→ Security validation
+→ Playwright execution
+→ Actual observation
+→ Next decision
+
+## Observation data
+
+Include only necessary page information:
+
+- Current URL
+- Relevant visible text
+- Accessible headings
+- Interactive elements
+- Form labels
+- Recent action outcomes
+- Current objective
+- Remaining budgets
+
+Do not automatically send full DOM dumps, page cookies, secrets, or entire source files.
+
+## Model output
+
+Use a validated structured action schema.
+
+Supported actions:
+
+- click
+- fill
+- select
+- navigate
+- scroll
+- wait
+- inspect
+- finish
+
+Never permit the model to return executable terminal commands as browser actions.
+
+## Agent safety
+
+Treat page content as untrusted data.
+
+A page can contain malicious instructions attempting to redirect an AI agent.
+
+Defend against:
+
+- Prompt injection
+- Secret exfiltration
+- Unauthorized navigation
+- Arbitrary tool execution
+- Policy overrides
+- Destructive operations
+- Infinite navigation loops
+
+A deterministic policy engine must have final authority.
+
+## AI providers
+
+Implement a provider adapter abstraction.
+
+Support at least one configurable provider for the first release.
+
+Potential future providers:
+
+- OpenAI-compatible API
+- Anthropic-compatible adapter
+- Local model adapters
+- VS Code language model integration where available and permitted
+
+Do not require all providers for MVP completion.
+
+## API keys
+
+Use VS Code SecretStorage.
+
+Do not write API keys to:
+
+- Workspace settings
+- package.json
+- Source files
+- Reports
+- Logs
+- Git-tracked configuration
+
+## Costs
+
+Allow users to configure:
+
+- Maximum AI calls
+- Token budgets
+- Per-run spending limits
+- Model selection
+- AI disabled mode
+
+Show estimated cost when provider pricing is configured.
+
+---
+
+# 17. ISSUE DETECTION ENGINE
+
+GhostTown must identify real observed failures.
+
+## Functional detectors
+
+Implement:
+
+1. JavaScript runtime exceptions
+2. Failed browser assertions
+3. Unexpected navigation failures
+4. Critical API request failures
+5. Unresponsive expected controls
+6. Broken links within allowed routes
+7. Form submission errors
+8. Missing expected outcomes
+9. Unexpected redirects
+10. Repeated failed interactions
+11. Browser timeouts
+12. Mobile horizontal overflow
+13. Common automated accessibility violations
+
+## Classification
+
+Every finding must be classified as one of:
+
+- Verified Defect
+- Observed Failure
+- Potential UX Concern
+- Accessibility Finding
+- Environment Problem
+- Inconclusive
+
+## Evidence
+
+Each issue should include:
+
+- Title
+- Severity
+- Category
+- Persona
+- Scenario
+- Page URL
+- Observed behavior
+- Expected behavior
+- Reproduction steps
+- Screenshot, when available
+- Trace, when available
+- Error details
+- Confidence and reproducibility
+
+## Important limitation
+
+An AI model's opinion is not proof of a defect.
+
+Use assertions, actual errors, and repeated observations to confirm failures.
+
+Do not claim human users would abandon a workflow based solely on a synthetic persona.
+
+---
+
+# 18. VS CODE NATIVE TESTING INTEGRATION
+
+Integrate with the official Testing API.
+
+Implement:
+
+- TestController
+- TestItem
+- TestRunProfile
+- TestRun
+- TestMessage
+
+Expose saved GhostTown scenarios as discoverable tests.
+
+Example hierarchy:
+
+GhostTown Tests
+
+Registration
+- New user registration
+- Invalid email validation
+
+Checkout
+- Add to cart
+- Sandbox checkout
+
+Navigation
+- Main menu
+- Contact page
+
+Users should be able to:
+
+- Run all tests
+- Run a selected scenario
+- View passed tests
+- View failed tests
+- Inspect output
+- Cancel tests
+
+Map real execution outcomes to native VS Code test statuses.
+
+Do not publish synthetic pass/fail results before execution completes.
+
+Ensure cancellation tokens propagate to the runner.
+
+---
+
+# 19. SOURCE CODE INTEGRATION
+
+One of GhostTown's strongest features should be connecting observed failures to a developer's source code.
+
+## Required capabilities
+
+- Open associated source files when reliably identified.
+- Navigate to relevant line numbers.
+- Show diagnostics for verified source locations.
+- Open browser traces.
+- Display reproduction steps.
+- Copy issue details.
+- Rerun the associated scenario.
+
+## Source mapping
+
+Use:
+
+- Stack traces
+- Source maps
+- Workspace file relationships
+- Explicit test assertion locations
+- Application-provided debugging metadata
+
+Do not guess source locations and present them as facts.
+
+When no reliable source mapping exists, display browser-level evidence without an editor diagnostic.
+
+## Diagnostics
+
+Use DiagnosticCollection for actionable mapped failures.
+
+Include:
+
+- Explanation
+- Severity
+- Relevant range
+- Issue ID
+- Link to evidence where supported
+
+Avoid flooding the Problems panel with speculative UX observations.
+
+---
+
+# 20. SESSION REPLAY AND EVIDENCE
+
+Capture:
+
+- Browser action timeline
+- Screenshots
+- Console errors
+- Network errors
+- Assertion results
+- Playwright traces
+- Session timing
+- Browser environment
+
+## Session replay
+
+For MVP, use Playwright's trace artifacts rather than building a custom video recording and playback system.
+
+Provide:
+
+- Open Trace
+- Open Screenshot
+- View Action Timeline
+- Rerun Scenario
+
+If launching an external trace viewer is required, do so through a controlled, documented workflow.
+
+Keep artifact paths safe and platform-independent.
+
+## Privacy
+
+Browser traces and screenshots can contain sensitive data.
+
+Use:
+
+- Configurable capture settings
+- Secret masking
+- Restricted artifact access
+- Retention limits
+- Local deletion
+- Clear privacy documentation
+
+Do not assume screenshots can always be safely redacted after recording.
+
+---
+
+# 21. RUN HISTORY
+
+Persist test run metadata locally.
+
+## Run history entries
+
+Store:
+
+- Run ID
+- Workspace identity
+- Target
+- Scenarios
+- Personas
+- Start time
+- End time
+- Status
+- Success/failure counts
+- Issue count
+- Artifact references
+
+## Storage
+
+Prefer VS Code extension storage directories for run metadata and artifacts.
+
+Do not write large run histories directly into Git-tracked project folders by default.
+
+Optionally allow an explicit project-local export directory.
+
+## UI
+
+Create compact history rows:
+
+Run title
+Date/time
+Personas
+Status
+Issue count
+
+Actions:
+
+- Open
+- Rerun
+- Export
+- Delete
+
+Do not populate history with fake demonstration runs.
+
+Implement retention policies and cleanup.
+
+---
+
+# 22. REPORT GENERATION
+
+Generate real, evidence-backed reports.
+
+## Sections
+
+- Test Overview
+- Target Application
+- Scenarios
+- Personas
+- Browser Configuration
+- Execution Outcomes
+- Verified Defects
+- Potential UX Findings
+- Accessibility Findings
+- Reproduction Steps
+- Screenshots and Trace References
+- Limitations
+
+## Output formats
+
+MVP:
+
+- JSON
+- Markdown
+
+Later:
+
+- HTML
+- PDF
+- JUnit XML for CI
+
+Ensure each report is derived from persisted execution results.
+
+No fabricated statistics.
+
+## Run comparison
+
+Support comparison between compatible runs.
+
+Highlight:
+
+- Newly observed issues
+- Previously observed issues
+- No longer reproduced issues
+- Scenario outcome changes
+- Timing differences
+
+Make clear when environment or configuration differences prevent reliable comparisons.
+
+---
+
+# 23. CONFIGURATION
+
+Support a project configuration file such as:
+
+ghosttown.config.json
+
+Example:
+
+```json
+{
+  "version": 1,
+  "target": {
+    "baseUrl": "http://localhost:3000",
+    "allowedOrigins": [
+      "http://localhost:3000"
+    ]
+  },
+  "execution": {
+    "mode": "deterministic",
+    "concurrency": 2,
+    "timeoutMs": 60000,
+    "maxActionsPerSession": 30
+  },
+  "personas": [
+    "first-time-visitor",
+    "mobile-user",
+    "keyboard-only"
+  ],
+  "scenarios": [
+    "registration",
+    "main-navigation"
+  ],
+  "artifacts": {
+    "screenshots": "on-failure",
+    "traces": "retain-on-failure"
+  },
+  "ai": {
+    "enabled": false
+  }
+}
+```
+
+Treat this as an illustrative initial schema and ensure the implemented configuration parser and documentation agree.
+
+Never place secrets in this file.
+
+Support schema validation, configuration versioning, and meaningful validation errors.
+
+---
+
+# 24. CLI DESIGN
+
+Implement a functional CLI.
+
+Suggested commands:
+
+ghosttown init
+
+ghosttown doctor
+
+ghosttown personas list
+
+ghosttown scenarios list
+
+ghosttown run
+
+ghosttown run --scenario registration
+
+ghosttown run --mode deterministic
+
+ghosttown report
+
+ghosttown report --format json
+
+ghosttown browsers install
+
+ghosttown --version
+
+ghosttown --help
+
+## Requirements
+
+- Use documented exit codes.
+- Exit nonzero for configured test failures.
+- Display helpful errors.
+- Support machine-readable JSON output.
+- Handle SIGINT/SIGTERM.
+- Clean up browsers after cancellation.
+- Do not require VS Code.
+- Do not require AI credentials in deterministic mode.
+
+The CLI should use the same core engine as the extension.
+
+---
+
+# 25. SECURITY MODEL
+
+Security is mandatory.
+
+## Local execution
+
+GhostTown tests applications on a developer-controlled machine or remote extension host.
+
+Require explicit user action to execute tests.
+
+Do not silently browse arbitrary URLs.
+
+## URL policies
+
+Enforce:
+
+- Allowed origins
+- Allowed protocols
+- Redirect rules
+- Navigation limits
+- Explicit external-domain approval
+
+Localhost testing is permitted under a user-selected local development profile.
+
+For remote untrusted targets, enforce stronger network isolation or refuse unsafe execution.
+
+Application-level checks alone do not provide full isolation from malicious websites.
+
+## Workspace safety
+
+- Respect Workspace Trust.
+- Never execute arbitrary commands from untrusted configuration.
+- Never follow AI-generated shell instructions.
+- Never run project scripts automatically.
+- Do not execute files discovered during scanning.
+
+## Webview security
+
+- Strict Content Security Policy
+- Nonced scripts where appropriate
+- Restricted localResourceRoots
+- No unsafe inline script execution
+- Validate every webview message
+- Escape untrusted content
+- Avoid unsafe HTML injection
+- No direct filesystem access from webview code
+- Only allowlisted extension commands
+
+## Data security
+
+- API keys in SecretStorage
+- Sensitive browser artifacts restricted
+- Safe path handling
+- No directory traversal
+- No secret logging
+- Clear local-data deletion behavior
+
+## AI safety
+
+No model should be allowed to override:
+
+- Target restrictions
+- Allowed actions
+- Budget limits
+- Workspace permissions
+- Artifact privacy policy
+
+---
+
+# 26. PERFORMANCE REQUIREMENTS
+
+The extension must remain responsive while tests run.
+
+## Goals
+
+- Fast activation
+- Minimal idle CPU usage
+- No browser launch on startup
+- No unnecessary repository scanning
+- Smooth sidebar interactions
+- Bounded event updates
+- Efficient history loading
+- Reliable worker cleanup
+
+## Browser concurrency
+
+Default to one or two simultaneous browser sessions.
+
+Allow users to increase concurrency subject to safe limits.
+
+Do not attempt to launch dozens of browsers on low-resource machines without checking capacity.
+
+## Memory management
+
+- Close browser contexts.
+- Terminate worker processes.
+- Dispose event listeners.
+- Release screenshots and trace handles.
+- Clean temporary files.
+- Avoid retaining complete DOM snapshots in memory indefinitely.
+
+Provide graceful degradation when resources are limited.
+
+---
+
+# 27. AUTOMATED TESTING STRATEGY
+
+Implement real tests for the core, CLI, and extension.
+
+## Unit tests
+
+Test:
+
+- Persona schemas
+- Scenario schemas
+- Configuration parsing
+- Allowed-origin checks
+- Action validation
+- AI decision validation
+- Assertion logic
+- Issue classification
+- Run lifecycle
+- Event serialization
+- Path validation
+- Report generation
+
+## Core integration tests
+
+Test:
+
+- Browser initialization
+- Session isolation
+- Real navigation
+- Element interaction
+- Form completion
+- Console capture
+- Network capture
+- Screenshots
+- Traces
+- Cancellation
+- Timeouts
+- Browser cleanup
+
+## Extension integration tests
+
+Using the VS Code Extension Development Host:
+
+1. Activate extension.
+2. Register commands.
+3. Render sidebar.
+4. Load configuration.
+5. Start runner.
+6. Receive execution events.
+7. Populate native test results.
+8. Open an issue.
+9. Verify artifact commands.
+10. Stop an active run.
+11. Deactivate and clean up resources.
+
+## Security tests
+
+Verify:
+
+- Untrusted workspace restrictions
+- Webview message validation
+- Unsafe URL rejection
+- Secret masking
+- Artifact access restrictions
+- Directory traversal prevention
+- AI prompt-injection resistance
+- Safe child-process spawning
+
+## Cross-platform tests
+
+Run on:
+
+- Windows
+- Ubuntu
+- macOS
+
+Account for:
+
+- Path separators
+- Process termination differences
+- Browser installation paths
+- Shell differences
+- File permissions
+- Extension-host behavior
+
+Do not claim cross-platform support based only on Windows development.
+
+---
+
+# 28. GHOSTTOWN TEST PLAYGROUND
+
+Create a small React/Vite application containing controlled, documented defects.
+
+## Pages
+
+- Homepage
+- Login
+- Registration
+- Search
+- Product Details
+- Contact Form
+- Settings
+
+## Seeded defects
+
+Include:
+
+1. Broken navigation
+2. Invalid form validation
+3. Button that fails its defined objective
+4. Delayed page loading
+5. Intentional API error
+6. Mobile layout overflow
+7. Keyboard-inaccessible control
+8. Incorrect success feedback
+
+The playground must use synthetic data only.
+
+It must not contain dangerous real-world vulnerabilities.
+
+## Golden acceptance test
+
+GhostTown must:
+
+1. Connect to the running playground.
+2. Start real browser sessions.
+3. Execute defined scenarios.
+4. Detect seeded failures.
+5. Capture evidence.
+6. Display findings in VS Code.
+7. Export a report.
+8. Successfully rerun the scenario after fixing a defect.
+
+Use a controlled fixture for every golden test.
+
+---
+
+# 29. PACKAGING AND DEPENDENCY RELIABILITY
+
+Production packaging is a release-critical feature.
+
+## npm packages
+
+For ghosttown-core and ghosttown-cli:
+
+- Provide correct exports.
+- Generate TypeScript declarations.
+- Support documented Node.js versions.
+- Include required runtime files.
+- Exclude development-only files.
+- Verify executable CLI shims.
+- Test clean installations.
+- Test ESM imports.
+- Define module format compatibility explicitly.
+
+Do not publish until package-install smoke tests pass.
+
+## Browser dependencies
+
+Resolve Playwright browser-version compatibility explicitly.
+
+Document browser installation.
+
+Avoid relying on a browser cache that happens to exist on the developer machine.
+
+Provide actionable recovery when the browser executable is missing.
+
+## VSIX packaging
+
+Use @vscode/vsce.
+
+Package the extension with only runtime-required assets.
+
+Include:
+
+- Bundled extension entry point
+- Bundled webview assets
+- Required runtime dependencies
+- Icons
+- README
+- LICENSE
+- CHANGELOG
+
+Exclude:
+
+- Test fixtures not required at runtime
+- Source maps containing secrets
+- Private configuration
+- Local artifacts
+- Unnecessary development dependencies
+- Large downloaded browser binaries unless explicitly justified and licensed
+
+## Clean-install test
+
+Build the VSIX.
+
+Install it into a fresh VS Code extension environment.
+
+Verify:
+
+1. Extension activates.
+2. Sidebar appears.
+3. Commands work.
+4. Configurations load.
+5. Runner launches.
+6. Browser dependency check works.
+7. Test execution works.
+8. Evidence opens.
+9. Cancellation works.
+10. No undeclared workspace dependency is required.
+
+Do not assume a successful VSIX build means the extension works after installation.
+
+---
+
+# 30. MARKETPLACE READINESS
+
+Prepare GhostTown for:
+
+- Visual Studio Marketplace
+- Open VSX Registry
+- GitHub Releases
+
+## Metadata
+
+Include:
+
+- Extension name
+- Publisher ID
+- Description
+- Categories
+- Keywords
+- Repository URL
+- Issue tracker
+- License
+- Icon
+- Screenshots
+- README
+- CHANGELOG
+- Release notes
+- Privacy and security information
+
+## README
+
+Explain:
+
+- What GhostTown does
+- Who it is for
+- How testing works
+- How to install
+- How to configure
+- How to run personas
+- How to inspect issues
+- How AI mode works
+- Browser dependencies
+- Local privacy behavior
+- Limitations
+- Troubleshooting
+
+Do not claim features that have not been implemented.
+
+## Marketplace compatibility
+
+Test the extension with supported VS Code versions.
+
+Check Cursor and other VS Code-derived IDE compatibility separately.
+
+Do not imply that successful operation in VS Code guarantees identical behavior everywhere.
+
+## Publishing
+
+Generate the actual release artifacts.
+
+Provide commands and documented publishing requirements.
+
+Do not invent credentials or claim publication succeeded without verification.
+
+---
+
+# 31. CI/CD PIPELINE
+
+Create GitHub Actions workflows.
+
+## Required jobs
+
+### Quality
+
+- Install locked dependencies
+- Lint
+- Format check
+- Typecheck
+- Unit tests
+
+### Integration
+
+- Core browser tests
+- CLI smoke tests
+- Runner IPC tests
+- Extension integration tests
+
+### Security
+
+- Dependency audit
+- Secret scanning
+- Unsafe configuration tests
+- Webview security checks
+
+### Packaging
+
+- Build npm packages
+- npm pack
+- Clean npm installation
+- Test CLI executable
+- Test TypeScript imports
+- Generate VSIX
+- Inspect VSIX contents
+- Clean-install extension smoke test
+
+### Cross-platform
+
+Run appropriate jobs on Windows, Linux and macOS.
+
+### Release
+
+Only create release packages when required checks pass.
+
+Use version tags and immutable release artifacts.
+
+Do not automatically publish to marketplaces without configured credentials and approved release workflows.
+
+---
+
+# 32. IMPLEMENTATION ROADMAP
+
+## Phase 0 — Architecture
+
+Design:
+
+- Domain contracts
+- Persona schema
+- Scenario schema
+- Runner lifecycle
+- Extension/runner protocol
+- Storage strategy
+- Security model
+- User journey
+
+Acceptance:
+
+Documented, internally consistent architecture.
+
+## Phase 1 — Standalone Core
+
+Implement:
+
+- Persona engine
+- Scenario engine
+- Playwright executor
+- Assertions
+- Screenshots
+- Traces
+- Deterministic test mode
+- Basic reports
+
+Acceptance:
+
+The core package runs a real scenario without VS Code.
+
+## Phase 2 — CLI
+
+Implement:
+
+- Commands
+- Configuration
+- Browser checks
+- Progress output
+- Cancellation
+- Reports
+
+Acceptance:
+
+A cleanly installed CLI can test the playground.
+
+## Phase 3 — VS Code Extension MVP
+
+Implement:
+
+- Sidebar
+- Project target
+- Persona selection
+- Run/Stop buttons
+- Runner connection
+- Live status
+- Issue explorer
+- Run history
+
+Acceptance:
+
+A user can execute a real test entirely from VS Code.
+
+## Phase 4 — Native Developer Integration
+
+Implement:
+
+- Test Explorer
+- Diagnostics
+- Source-map navigation
+- Trace opening
+- Rerun failed scenarios
+- Report export
+
+Acceptance:
+
+Verified failures can be investigated through native editor workflows.
+
+## Phase 5 — AI Exploration
+
+Implement:
+
+- Provider adapter
+- Observation model
+- Structured decisions
+- Action policy
+- Execution budgets
+- Hybrid testing
+
+Acceptance:
+
+An AI persona can explore an approved target safely and produce real, verifiable outcomes.
+
+## Phase 6 — Production Hardening
+
+Implement:
+
+- Security controls
+- Failure recovery
+- Resource limits
+- Cross-platform support
+- Worker cleanup
+- Performance optimization
+- Accessibility improvements
+
+Acceptance:
+
+All mandatory reliability and security gates pass.
+
+## Phase 7 — Release
+
+Implement:
+
+- npm packaging
+- VSIX packaging
+- Marketplace metadata
+- Documentation
+- CI/CD
+- Clean-install smoke tests
+- Release verification
+
+Acceptance:
+
+The extension and dependent packages install and execute correctly from release artifacts.
+
+---
+
+# 33. PRODUCTION ACCEPTANCE CHECKLIST
+
+## Core engine
+
+- [ ] Real Playwright execution works.
+- [ ] Multiple isolated sessions work.
+- [ ] Persona settings affect execution.
+- [ ] Assertions validate expected outcomes.
+- [ ] Screenshots and traces are genuine.
+- [ ] Timeouts are enforced.
+- [ ] Cancellation works.
+- [ ] Resources are cleaned up.
+
+## VS Code extension
+
+- [ ] Sidebar opens.
+- [ ] Workspace detection works.
+- [ ] Target configuration works.
+- [ ] Personas can be selected.
+- [ ] Tests can be started.
+- [ ] Tests can be stopped.
+- [ ] Real-time status updates work.
+- [ ] Native Test Explorer integration works.
+- [ ] Issues can be inspected.
+- [ ] Run history persists.
+- [ ] Source navigation works when mapping is available.
+
+## AI
+
+- [ ] AI is optional.
+- [ ] API keys are stored securely.
+- [ ] Structured decisions are validated.
+- [ ] Unsafe actions are blocked.
+- [ ] Budgets are enforced.
+- [ ] Missing AI credentials do not break deterministic testing.
+
+## Security
+
+- [ ] Workspace Trust enforced.
+- [ ] Webview CSP configured.
+- [ ] Webview messages validated.
+- [ ] Unsafe navigation restricted.
+- [ ] No secret logging.
+- [ ] Runner processes are controlled.
+- [ ] Path traversal prevented.
+- [ ] Sensitive artifact access controlled.
+
+## Packaging
+
+- [ ] npm clean-install test passes.
+- [ ] CLI executable works.
+- [ ] TypeScript declarations resolve.
+- [ ] VSIX contains required runtime files.
+- [ ] VSIX installs cleanly.
+- [ ] Required browsers can be installed.
+- [ ] Extension functions without a monorepo checkout.
+
+## Reliability
+
+- [ ] No critical unhandled errors.
+- [ ] No stuck run states after ordinary failures.
+- [ ] Worker crashes are handled.
+- [ ] Cancellation releases browser resources.
+- [ ] Repeated runs are stable.
+- [ ] Cross-platform tests pass.
+- [ ] Documentation matches implementation.
+
+---
+
+# 34. FINAL END-TO-END VERIFICATION
+
+Perform this complete real-world test:
+
+1. Install the packaged GhostTown extension into a clean VS Code instance.
+2. Open the supplied React test playground.
+3. Start the demo development server with user approval.
+4. Open GhostTown from the sidebar.
+5. Configure the local target.
+6. Select three synthetic personas.
+7. Choose a registration scenario.
+8. Start the population test.
+9. Verify actual Playwright browser sessions launch.
+10. Verify each session performs real actions.
+11. Verify the live UI reports actual progress.
+12. Detect the deliberately broken registration behavior.
+13. Open the failed assertion.
+14. Open its screenshot.
+15. Open the Playwright trace.
+16. Navigate to a source location when reliable mapping exists.
+17. Stop an additional active run.
+18. Verify browser cleanup.
+19. Fix the seeded registration defect.
+20. Rerun the same scenario.
+21. Verify the relevant assertion now passes.
+22. Export the results.
+23. Restart VS Code.
+24. Verify run history survives.
+25. Test without AI credentials.
+26. Test with valid AI credentials if configured.
+27. Run the full automated test suite.
+28. Run the clean-install smoke tests.
+29. Verify the generated VSIX.
+30. Document actual results and remaining limitations.
+
+Do not claim success without observing the corresponding behavior.
+
+---
+
+# 35. REQUIRED FINAL DELIVERABLES
+
+Provide:
+
+1. Complete GhostTown source code
+2. Reusable ghosttown-core npm package
+3. Standalone ghosttown-cli
+4. Local browser runner
+5. Functional VS Code extension
+6. Compact, polished sidebar
+7. Persona Studio
+8. Scenario management
+9. Real Playwright execution
+10. Evidence-backed issue detection
+11. Native VS Code Test Explorer integration
+12. Reliable run history
+13. Screenshot and trace inspection
+14. Optional AI decision engine
+15. Example React test playground
+16. Comprehensive automated tests
+17. Cross-platform CI/CD workflows
+18. Production security controls
+19. README and developer documentation
+20. npm package artifacts
+21. Installable VSIX file
+22. Marketplace publishing metadata
+23. Release verification report
+24. Known limitations and follow-up roadmap
+
+If any requirement cannot be fully verified in the available environment, document the exact blocker and keep the repository in a working state.
+
+---
+
+# 36. FINAL DEVELOPMENT INSTRUCTIONS
+
+Begin by inspecting the repository.
+
+Then:
+
+1. Produce a concise architecture.
+2. Explain dependency choices.
+3. Design the module boundaries.
+4. Define the core public API.
+5. Define the extension/runner protocol.
+6. Design the browser lifecycle.
+7. Create an implementation plan.
+8. Start building the actual functionality.
+
+Prioritize:
+
+**Working Playwright Engine → CLI → VS Code Integration → Evidence → AI → Production Hardening → Marketplace Release**
+
+Never start by building beautiful screens that show fabricated test results.
+
+Do not stop after architecture documentation when implementation is possible.
+
+Implement features incrementally and verify them through real execution.
+
+For each completed milestone, provide:
+
+- Files changed
+- Working functionality
+- Tests executed
+- Test results
+- Known limitations
+- Next implementation milestone
+
+Do not weaken tests to make CI pass.
+
+Do not hide errors.
+
+Do not create placeholder behavior and present it as complete.
+
+When a feature is deferred, remove misleading controls or clearly mark it as unavailable.
+
+# FINAL PRODUCT GOAL
+
+Build GhostTown into a trusted developer tool that lets programmers:
+
+- Open their application in VS Code
+- Configure synthetic users
+- Execute real browser testing
+- Explore applications with optional AI
+- Discover reproducible problems
+- Inspect exact evidence
+- Fix bugs efficiently
+- Verify that their changes actually work
+
+The extension must be genuinely useful to developers, technically sound, easy to install, safe by default, and ready for real-world use.
+
+**GhostTown — Your app deserves users before it gets users.**
+
+**START IMPLEMENTATION NOW.**

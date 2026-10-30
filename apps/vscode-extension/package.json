@@ -1,0 +1,161 @@
+{
+  "name": "ghosttown",
+  "displayName": "GhostTown",
+  "icon": "resources/icon.png",
+  "version": "0.1.0",
+  "publisher": "shubhammaji1",
+  "description": "Your app deserves users before it gets users. Local persona-driven browser testing.",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Testing"
+  ],
+  "keywords": [
+    "playwright",
+    "testing",
+    "personas",
+    "local",
+    "qa"
+  ],
+  "main": "./dist/extension.cjs",
+  "extensionKind": [
+    "workspace"
+  ],
+  "license": "MIT",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Browser execution requires a trusted workspace."
+    },
+    "virtualWorkspaces": false
+  },
+  "activationEvents": [
+    "onView:ghosttown.sidebar",
+    "workspaceContains:ghosttown.config.json"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ghosttown",
+          "title": "GhostTown",
+          "icon": "resources/ghost.svg"
+        }
+      ]
+    },
+    "views": {
+      "ghosttown": [
+        {
+          "id": "ghosttown.sidebar",
+          "name": "Population Testing"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "ghosttown.configureTarget",
+        "title": "GhostTown: Configure Target"
+      },
+      {
+        "command": "ghosttown.managePersonas",
+        "title": "GhostTown: Select Personas"
+      },
+      {
+        "command": "ghosttown.configureAI",
+        "title": "GhostTown: Configure AI Model"
+      },
+      {
+        "command": "ghosttown.selectMode",
+        "title": "GhostTown: Select Testing Mode"
+      },
+      {
+        "command": "ghosttown.createPersona",
+        "title": "GhostTown: Edit Persona Configuration"
+      },
+      {
+        "command": "ghosttown.createScenario",
+        "title": "GhostTown: Create Scenario"
+      },
+      {
+        "command": "ghosttown.runPopulation",
+        "title": "GhostTown: Run Population Test",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ghosttown.runScenario",
+        "title": "GhostTown: Run Scenario"
+      },
+      {
+        "command": "ghosttown.rerunFailedScenario",
+        "title": "GhostTown: Rerun Failed Scenarios"
+      },
+      {
+        "command": "ghosttown.stopRun",
+        "title": "GhostTown: Stop Run",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "ghosttown.openRunHistory",
+        "title": "GhostTown: Open Run History"
+      },
+      {
+        "command": "ghosttown.openDashboard",
+        "title": "GhostTown: Open Latest Report"
+      },
+      {
+        "command": "ghosttown.openStudio",
+        "title": "GhostTown: Open Persona & Scenario Studio"
+      },
+      {
+        "command": "ghosttown.inspectIssue",
+        "title": "GhostTown: Inspect Findings"
+      },
+      {
+        "command": "ghosttown.openScreenshot",
+        "title": "GhostTown: Open Screenshot"
+      },
+      {
+        "command": "ghosttown.openTrace",
+        "title": "GhostTown: Open Trace"
+      },
+      {
+        "command": "ghosttown.exportReport",
+        "title": "GhostTown: Export Report"
+      },
+      {
+        "command": "ghosttown.clearHistory",
+        "title": "GhostTown: Clear Run History"
+      },
+      {
+        "command": "ghosttown.checkEnvironment",
+        "title": "GhostTown: Check Browser Environment"
+      },
+      {
+        "command": "ghosttown.installBrowser",
+        "title": "GhostTown: Install Chromium"
+      },
+      {
+        "command": "ghosttown.openDocumentation",
+        "title": "GhostTown: Open Documentation"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "ghosttown.runPopulation",
+          "when": "view == ghosttown.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "ghosttown.stopRun",
+          "when": "view == ghosttown.sidebar",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "playwright": "1.64.1"
+  }
+}

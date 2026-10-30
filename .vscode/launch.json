@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "GhostTown Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--new-window",
+        "--extensionDevelopmentPath=${workspaceFolder}/apps/vscode-extension",
+        "--user-data-dir=${workspaceFolder}/artifacts/debug/user-data",
+        "--extensions-dir=${workspaceFolder}/artifacts/debug/extensions",
+        "--skip-welcome",
+        "--skip-release-notes",
+        "${workspaceFolder}"
+      ],
+      "outFiles": ["${workspaceFolder}/apps/vscode-extension/dist/**/*.cjs"],
+      "preLaunchTask": "Build GhostTown"
+    }
+  ]
+}

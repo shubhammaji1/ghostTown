@@ -1,0 +1,9 @@
+# Security and privacy
+
+Use GhostTown only against applications you control. v0.1 accepts HTTP(S) loopback origins only. Browser contexts isolate cookies/storage between persona sessions, not the operating system or network. Request routing and service worker restrictions are application guardrails; do not use GhostTown to browse hostile sites. WebSockets, WebRTC, browser internals and DNS are not fully network-sandboxed.
+
+Execution requires an explicit action and a trusted VS Code workspace. No project scripts, model-generated code or shell instructions are executed. Configurations and runner messages are strictly schema validated. The runner is a separate process. External origins and credential-bearing target URLs are rejected.
+
+Reports omit form values. Passwords, text inputs and editable fields are masked in screenshots, but rendered application text can still expose private data. Traces contain DOM/network details and are disabled by default. Enable them only with synthetic data. Evidence stays in local extension storage, or the explicitly chosen CLI output folder. Clear history deletes evidence; exported copies must be deleted separately. Directory modes are best effort on Windows; use your OS account permissions.
+
+Never commit real credentials or evidence. No telemetry is implemented. Optional AI uses VS Code-managed model authentication and sends only goals, route paths and approved control labels after per-run consent. Labels are untrusted data, and may still contain sensitive application information. The runner accepts only schema-validated decisions over explicitly approved selectors and allowlisted synthetic values. Model instructions cannot change policy or invoke shell/JS. Calls, response size, input tokens and deadlines are bounded; monetary spend requires provider-side limits. Report vulnerabilities privately to the maintainer through the repository's security reporting channel once configured; do not include live secrets.

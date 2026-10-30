@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "target": "http://127.0.0.1:4173",
+  "mode": "deterministic",
+  "ai": {
+    "maxDecisions": 5
+  },
+  "concurrency": 1,
+  "personas": [
+    {
+      "id": "first-time",
+      "name": "First-Time Visitor",
+      "description": "",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "locale": "en-US",
+      "mobile": false,
+      "keyboardOnly": false,
+      "actionTimeoutMs": 5000,
+      "delayMs": 0,
+      "reducedMotion": false,
+      "networkLatencyMs": 0
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile-Only Visitor",
+      "description": "",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "locale": "en-US",
+      "mobile": true,
+      "keyboardOnly": false,
+      "actionTimeoutMs": 5000,
+      "delayMs": 0,
+      "reducedMotion": false,
+      "networkLatencyMs": 0
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "homepage",
+      "name": "Homepage is available",
+      "goal": "Verify defined outcomes",
+      "startPath": "/",
+      "maxDurationMs": 30000,
+      "steps": [
+        {
+          "type": "assertVisible",
+          "selector": "h1"
+        }
+      ],
+      "explorationSelectors": []
+    },
+    {
+      "id": "registration",
+      "name": "Registration expected outcome",
+      "goal": "Create a synthetic account and verify success",
+      "startPath": "/register",
+      "maxDurationMs": 30000,
+      "steps": [
+        {
+          "type": "fill",
+          "selector": "#email",
+          "value": "synthetic@example.test"
+        },
+        {
+          "type": "fill",
+          "selector": "#password",
+          "value": "Synthetic-only-123"
+        },
+        {
+          "type": "click",
+          "selector": "button[type=submit]"
+        },
+        {
+          "type": "assertText",
+          "selector": "#result",
+          "text": "Account created"
+        }
+      ],
+      "explorationSelectors": [
+        "#email",
+        "button[type=submit]"
+      ]
+    }
+  ],
+  "capture": {
+    "screenshots": true,
+    "traces": false
+  },
+  "allowedOrigins": [],
+  "maxRunDurationMs": 120000
+}

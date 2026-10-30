@@ -1,0 +1,6 @@
+src/**
+**/*.map
+tsconfig*.json
+node_modules/.bin/**
+node_modules/playwright-core/.local-browsers/**
+node_modules/playwright/.local-browsers/**

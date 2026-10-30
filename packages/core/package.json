@@ -1,0 +1,28 @@
+{
+  "name": "ghosttown-core",
+  "version": "0.1.0",
+  "description": "Persona-driven local Playwright testing engine",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "playwright": "1.64.1",
+    "zod": "3.25.76"
+  },
+  "license": "MIT"
+}

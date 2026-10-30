@@ -1,0 +1,20 @@
+{
+  "name": "ghosttown-cli",
+  "version": "0.1.0",
+  "description": "Local synthetic user testing CLI",
+  "bin": {
+    "ghosttown": "dist/bin.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "playwright": "1.64.1"
+  },
+  "license": "MIT"
+}
