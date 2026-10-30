@@ -13,6 +13,16 @@ import {
 } from '../../packages/core/src/index.js';
 import { studioMessageSchema, decisionSchema } from '../../packages/shared/src/index.js';
 describe('strict declarative contracts', () => {
+  it('applies nested configuration defaults and preserves explicitly selected options', () => {
+    const base = starterConfig();
+    const { ai, capture, ...input } = base;
+    const defaults = configSchema.parse(input);
+    expect(defaults.ai).toEqual({ maxDecisions: 5 });
+    expect(defaults.capture).toEqual({ screenshots: true, traces: false });
+    const partial = configSchema.parse({ ...input, capture: { traces: true }, ai: {} });
+    expect(partial.capture).toEqual({ screenshots: true, traces: true });
+    expect(partial.ai.maxDecisions).toBe(5);
+  });
   it('requires a real expected outcome', () => {
     expect(() =>
       scenarioSchema.parse({

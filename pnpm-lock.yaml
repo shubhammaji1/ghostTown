@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  tinypool: 2.1.2
+
 importers:
 
   .:
@@ -57,8 +60,8 @@ importers:
         specifier: 3.2.7
         version: 3.2.7(@types/node@22.20.5)(tsx@4.23.15)
       zod:
-        specifier: 3.25.76
-        version: 3.25.76
+        specifier: 4.6.6
+        version: 4.6.6
 
   apps/vscode-extension:
     dependencies:
@@ -80,8 +83,8 @@ importers:
         specifier: 1.64.1
         version: 1.64.1
       zod:
-        specifier: 3.25.76
-        version: 3.25.76
+        specifier: 4.6.6
+        version: 4.6.6
 
   packages/runner: {}
 
@@ -2617,9 +2620,9 @@ packages:
       picomatch: 4.0.7
     dev: true
 
-  /tinypool@1.1.1:
-    resolution: {integrity: sha512-Zba82s87IFq9A9XmjiX5uZA/ARWDrB03OHlq+Vw1fSdt0I+4/Kutwy8BP4Y/y/aORMo61FQ0vIb5j44vSo5Pkg==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  /tinypool@2.1.2:
+    resolution: {integrity: sha512-9YodfrxS9g9IbFr/KOjE5bAeJ0p61n3bW6mqvy0jtoeKd1kTW1Cxm0oulm6KX2lyM9Gl6WIe8nEbY7LWv5ZJww==}
+    engines: {node: ^20.0.0 || >=22.0.0}
     dev: true
 
   /tinyrainbow@2.0.0:
@@ -2852,7 +2855,7 @@ packages:
       tinybench: 2.9.0
       tinyexec: 0.3.2
       tinyglobby: 0.2.17
-      tinypool: 1.1.1
+      tinypool: 2.1.2
       tinyrainbow: 2.0.0
       vite: 7.3.7(@types/node@22.20.5)(tsx@4.23.15)
       vite-node: 3.2.4(@types/node@22.20.5)(tsx@4.23.15)
@@ -2926,5 +2929,5 @@ packages:
     dependencies:
       buffer-crc32: 0.2.13
 
-  /zod@3.25.76:
-    resolution: {tarball: https://registry.npmjs.org/zod/-/zod-3.25.76.tgz}
+  /zod@4.6.6:
+    resolution: {integrity: sha512-4UmzQUF5fxvfcYHlbjBmejU+w+hbDnWFx4aS8kBx7nPBHcO2SqPbpAG8snbdg+Xse4pRefR98hgjFgIMCI/UhA==}

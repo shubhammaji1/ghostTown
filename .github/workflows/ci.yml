@@ -23,9 +23,9 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm format:check
       - run: pnpm build
+      - run: pnpm package:vsix
       - run: pnpm test
       - run: pnpm test:packaging
-      - run: pnpm package:vsix
       - run: pnpm test:vsix
       - name: Extension host (Linux)
         if: runner.os == 'Linux'

@@ -5,11 +5,12 @@ import { resolve, join, dirname } from 'node:path';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 await mkdir('artifacts', { recursive: true });
+// npm_execpath points to pnpm when invoked via `pnpm test:packaging`.
+// Resolve npm itself so npm pack/install retain the same semantics in CI.
 const npm =
-  process.env.npm_execpath ??
-  (process.platform === 'win32'
+  process.platform === 'win32'
     ? join(dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js')
-    : 'npm');
+    : resolve(dirname(process.execPath), '../lib/node_modules/npm/bin/npm-cli.js');
 function command(args, options = {}) {
   const r = spawnSync(process.execPath, args, { encoding: 'utf8', ...options });
   if (r.status !== 0) throw new Error(`${args.join(' ')}\n${r.stdout}\n${r.stderr}`);

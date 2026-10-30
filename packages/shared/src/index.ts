@@ -83,14 +83,14 @@ export const configSchema = z
     ai: z
       .object({ maxDecisions: z.number().int().min(1).max(20).default(5) })
       .strict()
-      .default({}),
+      .prefault({}),
     concurrency: z.number().int().min(1).max(4).default(1),
     personas: z.array(personaSchema).min(1).max(20),
     scenarios: z.array(scenarioSchema).min(1).max(30),
     capture: z
       .object({ screenshots: z.boolean().default(true), traces: z.boolean().default(false) })
       .strict()
-      .default({}),
+      .prefault({}),
     allowedOrigins: z.array(z.string().url()).max(10).default([]),
     maxRunDurationMs: z.number().int().min(1000).max(600000).default(120000),
   })
