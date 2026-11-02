@@ -2,6 +2,9 @@ import { cp, mkdir, readFile, writeFile, realpath } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
+const icon = await readFile('apps/vscode-extension/resources/icon.png');
+if (icon.length > 1024 * 1024)
+  throw new Error('Marketplace icon must be at most 1024 KB. Optimize resources/icon.png.');
 const { createVSIX } = require('@vscode/vsce');
 const stage = resolve('artifacts/extension');
 await mkdir(stage, { recursive: true });

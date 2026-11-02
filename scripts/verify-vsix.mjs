@@ -17,6 +17,8 @@ for (const file of [
   'extension/resources/icon.png',
 ])
   assert(zip.file(file), `Missing ${file}`);
+const icon = await zip.file('extension/resources/icon.png').async('nodebuffer');
+assert(icon.length <= 1024 * 1024, 'Marketplace icon exceeds 1024 KB');
 for (const name of Object.keys(zip.files))
   assert(
     !/\.local-browsers|\.env$|report\.json$/.test(name),
